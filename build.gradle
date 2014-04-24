@@ -1,0 +1,33 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+
+jar.baseName = 'polygonCollisionDetection'
+archivesBaseName = 'polygonCollisionDetection'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+}
+
+dependencies {
+	compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task copyJarToLib(type: Copy) {
+    from "$buildDir/libs"
+    into "${project(':app').getProjectDir()}/libs"
+}
+tasks.copyJarToLib.dependsOn(jar, sourcesJar)
+
+artifacts {
+    archives sourcesJar
+}
