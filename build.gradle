@@ -1,3 +1,5 @@
+project.buildDir = "/Volumes/${rootProject.ramdiskName}/13_AN_Travian_Build_Dir/libs/PolygonCollisionDetection"
+
 apply plugin: 'java'
 
 sourceCompatibility = 1.6
